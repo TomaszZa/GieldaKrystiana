@@ -22,7 +22,7 @@ public class Company {
 		countGrowPoint();
 	}
 
-	// moglo by byc tez dla ilu dni
+	// moglo by byc tez dla ilu dni, oraz wtedy dodac sortowanie trzeba
 	private void countGrowPoint() {
 		Double result = new Double(0.0);
 		Long numberOfDays = new Long(prices.size());

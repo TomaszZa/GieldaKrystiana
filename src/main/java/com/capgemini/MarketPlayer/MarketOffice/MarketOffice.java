@@ -4,17 +4,16 @@ import java.util.List;
 
 import com.capgemini.MarketPlay.Market.DataToStartegy;
 import com.capgemini.MarketPlay.Market.Market;
-import com.capgemini.MarketPlay.Strategies.ToBuyFromMarket;
+import com.capgemini.MarketPlay.Strategies.ToBuyAndSellWithMarket;
 
 public class MarketOffice {
 	private final float buyingTax = 0.5f;
 	private DataToStartegy dataToStrategy;
 	String todayDate;
 
-	private Market market = new Market(todayDate);
+	private Market market = new Market();
 
-	public MarketOffice(String todayDate) {
-		this.todayDate = todayDate;
+	public MarketOffice() {
 	}
 
 	public void takeAndChangeDate() { // obczaic czy zmienia!!!!!!!
@@ -32,12 +31,18 @@ public class MarketOffice {
 		return dataToStrategy;
 	}
 
-	public void buy(ToBuyFromMarket actions) {
-		market.buy(actions);
-		List<Double> actionsPrices = actions.getPriceForOneBoughtAction();
-		for (Double price : actionsPrices) {
+	public void buyAndSell(ToBuyAndSellWithMarket actions) {
+		market.buyAndSell(actions);
+		List<Double> boughtActionsPrices = actions.getPriceForOneBoughtAction();
+		List<Double> soldActionsPrices = actions.getPriceForOneSoldActions();
+
+		for (Double price : boughtActionsPrices) {
 			price += price * buyingTax;
 		}
+		for (Double price : soldActionsPrices) {
+			price -= price * buyingTax;
+		}
+
 	}
 
 }

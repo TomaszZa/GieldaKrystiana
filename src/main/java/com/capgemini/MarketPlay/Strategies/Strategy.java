@@ -4,6 +4,6 @@ import com.capgemini.MarketPlay.Market.DataToStartegy;
 
 public interface Strategy {
 
-	public ToBuyFromMarket checkMovesInStrategy(DataToStartegy date);
+	public ToBuyAndSellWithMarket checkMovesInStrategy(DataToStartegy date);
 
 }

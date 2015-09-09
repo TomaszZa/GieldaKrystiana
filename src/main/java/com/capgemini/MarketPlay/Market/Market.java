@@ -4,14 +4,13 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-import com.capgemini.MarketPlay.Strategies.ToBuyFromMarket;
+import com.capgemini.MarketPlay.Strategies.ToBuyAndSellWithMarket;
 
 public class Market {
 	private ReadFromFile file = new ReadFromFile();
 	private HashSet<Company> companys;
 
-	public Market(String todayDate) {
-		startNewDayOnMarket(todayDate);
+	public Market() {
 	}
 
 	public void startNewDayOnMarket(String todayDate) {
@@ -49,16 +48,24 @@ public class Market {
 		return new DataToStartegy(nameActions, todayPriceForActions, growPoint);
 	}
 
-	public void buy(ToBuyFromMarket actions) {
+	public void buyAndSell(ToBuyAndSellWithMarket actions) {
 		int i;
-		List<Double> prices = actions.getPriceForOneBoughtAction();
+		int j;
+		List<Double> boughtPrices = actions.getPriceForOneBoughtAction();
+		List<Double> soldPrices = actions.getPriceForOneBoughtAction();
 
 		for (Company company : companys) {
 			i = 0;
+			j = 0;
 			for (String actionName : actions.getNameOfBoughtActions()) {
 				i++;
 				if (company.getName() == actionName)
-					prices.set(i - 1, company.getTodayPrice());
+					boughtPrices.set(i - 1, company.getTodayPrice());
+			}
+			for (String actionName : actions.getNameOfSoldActions()) {
+				j++;
+				if (company.getName() == actionName)
+					soldPrices.set(i - 1, company.getTodayPrice());
 			}
 		}
 	}
