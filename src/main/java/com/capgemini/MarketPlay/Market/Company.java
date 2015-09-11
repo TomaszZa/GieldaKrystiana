@@ -8,6 +8,7 @@ public class Company {
 	private Double growPoint;
 	private HashMap<String, Double> prices = new HashMap<>();
 
+	// DODAC KLASE SORTUJACA HASHMAPE
 	public Company(String name, Double todayPrice, String date) {
 		this.name = name;
 		this.todayPrice = todayPrice;
@@ -22,10 +23,11 @@ public class Company {
 		countGrowPoint();
 	}
 
-	// moglo by byc tez dla ilu dni, oraz wtedy dodac sortowanie trzeba
+	// moglo by byc tez dla ilu dni
 	private void countGrowPoint() {
 		Double result = new Double(0.0);
 		Long numberOfDays = new Long(prices.size());
+		// pierw posortowac hashmape
 		for (String key : prices.keySet()) {
 			result += prices.get(key) / numberOfDays;
 		}

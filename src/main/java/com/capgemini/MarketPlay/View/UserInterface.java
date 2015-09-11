@@ -18,7 +18,7 @@ public class UserInterface {
 		System.out.print("Choose your play strategy, ");
 		System.out.print("a-growing strategy,b-falling strategy,c-no changing strategy: ");
 
-		for (; choose != 'a' || choose != 'b' || choose != 'c';) {
+		while (choose != 'a' || choose != 'b' || choose != 'c') {
 			try {
 				choose = (char) System.in.read();
 			} catch (IOException e) {
@@ -43,7 +43,7 @@ public class UserInterface {
 
 	public void showPlayerActions() {
 		System.out.println("Player");
-		// show everything from player
+		// show everything from player model
 	}
 
 }

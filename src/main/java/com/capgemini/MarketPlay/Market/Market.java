@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-import com.capgemini.MarketPlay.Strategies.ToBuyAndSellWithMarket;
+import com.capgemini.MarketPlay.Main.DateController;
+import com.capgemini.MarketPlay.Strategies.ToBuyAndSellWithMarketTransport;
 
 public class Market {
 	private ReadFromFile file = new ReadFromFile();
 	private HashSet<Company> companys;
+	private DateController dateController; // podaje date dla gieldy
 
 	public Market() {
 	}
@@ -34,7 +36,7 @@ public class Market {
 		}
 	}
 
-	public DataToStartegy getRecentDataToStrategy() {
+	public DataToStartegyTransport getRecentDataToStrategy() {
 		List<String> nameActions = new ArrayList<String>();
 		List<Double> todayPriceForActions = new ArrayList<Double>();
 		List<Double> growPoint = new ArrayList<Double>();
@@ -45,27 +47,27 @@ public class Market {
 			growPoint.add(company.getGrowPoint());
 		}
 
-		return new DataToStartegy(nameActions, todayPriceForActions, growPoint);
+		return new DataToStartegyTransport(nameActions, todayPriceForActions, growPoint);
 	}
 
-	public void buyAndSell(ToBuyAndSellWithMarket actions) {
-		int i;
-		int j;
+	public void buyAndSell(ToBuyAndSellWithMarketTransport actions) {
 		List<Double> boughtPrices = actions.getPriceForOneBoughtAction();
-		List<Double> soldPrices = actions.getPriceForOneBoughtAction();
+		List<Double> soldPrices = actions.getPriceForOneSoldActions();
+		int boughtActionCount;
+		int soldActionCount;
 
 		for (Company company : companys) {
-			i = 0;
-			j = 0;
-			for (String actionName : actions.getNameOfBoughtActions()) {
-				i++;
-				if (company.getName() == actionName)
-					boughtPrices.set(i - 1, company.getTodayPrice());
+			boughtActionCount = 0;
+			soldActionCount = 0;
+			for (String actionOfCompanyName : actions.getNameOfBoughtActions()) {
+				boughtActionCount++;
+				if (company.getName() == actionOfCompanyName)
+					boughtPrices.set(boughtActionCount - 1, company.getTodayPrice());
 			}
-			for (String actionName : actions.getNameOfSoldActions()) {
-				j++;
-				if (company.getName() == actionName)
-					soldPrices.set(i - 1, company.getTodayPrice());
+			for (String actionOfCompanyName : actions.getNameOfSoldActions()) {
+				soldActionCount++;
+				if (company.getName() == actionOfCompanyName)
+					soldPrices.set(boughtActionCount - 1, company.getTodayPrice());
 			}
 		}
 	}

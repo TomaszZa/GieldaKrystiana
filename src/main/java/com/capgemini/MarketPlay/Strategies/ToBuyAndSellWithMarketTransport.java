@@ -2,7 +2,7 @@ package com.capgemini.MarketPlay.Strategies;
 
 import java.util.List;
 
-public class ToBuyAndSellWithMarket {
+public class ToBuyAndSellWithMarketTransport {
 	private List<String> nameOfBoughtActions;
 	private List<Long> numberOfBoughtActions;
 	private List<Double> priceForOneBoughtActions;

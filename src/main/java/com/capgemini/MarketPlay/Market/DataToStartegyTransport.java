@@ -2,16 +2,16 @@ package com.capgemini.MarketPlay.Market;
 
 import java.util.List;
 
-public class DataToStartegy {
+public class DataToStartegyTransport {
 
 	private List<String> nameActions;
 	private List<Double> todayPriceForActions;
 	private List<Double> growPoints;
 	private Double playerAccountState;
-	private List<String> playerNameActions;
-	private List<Long> playerNumberActions;
+	private List<String> playerOwnNameActions;
+	private List<Long> playerOwnNumberActions;
 
-	public DataToStartegy(List<String> nameActions, List<Double> todayPriceForActions, List<Double> growPoints) {
+	public DataToStartegyTransport(List<String> nameActions, List<Double> todayPriceForActions, List<Double> growPoints) {
 
 		this.nameActions = nameActions;
 		this.todayPriceForActions = todayPriceForActions;
@@ -51,19 +51,19 @@ public class DataToStartegy {
 	}
 
 	public List<String> getPlayerNameActions() {
-		return playerNameActions;
+		return playerOwnNameActions;
 	}
 
 	public void setPlayerNameActions(List<String> playerNameActions) {
-		this.playerNameActions = playerNameActions;
+		this.playerOwnNameActions = playerNameActions;
 	}
 
 	public List<Long> getPlayerNumberActions() {
-		return playerNumberActions;
+		return playerOwnNumberActions;
 	}
 
 	public void setPlayerNumberActions(List<Long> playerNumberActions) {
-		this.playerNumberActions = playerNumberActions;
+		this.playerOwnNumberActions = playerNumberActions;
 	}
 
 }

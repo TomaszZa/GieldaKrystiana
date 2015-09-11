@@ -14,7 +14,7 @@ public class DateController {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-
+		// generacja nowej daty
 	}
 
 	public static DateController getInstance() {
