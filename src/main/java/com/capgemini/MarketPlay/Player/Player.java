@@ -58,33 +58,48 @@ public class Player {
 
 	public void realizeTrade() {
 		ToBuyAndSellWithMarketTransport toBuyAndSellFromMarket = strategy.checkMovesInStrategy(dataToStrategy);
-		List<Double> priceForOneBoughtActions = toBuyAndSellFromMarket.getPriceForOneBoughtAction();
-		List<Double> priceForOneSoldActions = toBuyAndSellFromMarket.getPriceForOneSoldActions();
-		List<Double> playerValueOfActions = new ArrayList<Double>();
 		Double accountState = playerData.getPlayerAccountState();
-		Double value;
 		Double outcome = 0.0;
 		Double income = 0.0;
 
 		marketOffice.buyAndSell(toBuyAndSellFromMarket);
-
 		List<String> boughtActionsNames = toBuyAndSellFromMarket.getNameOfBoughtActions();
-		List<Long> boughtActionsEmount = toBuyAndSellFromMarket.getNumberOfBoughtActions();
-
 		playerData.setPlayerNameActions(boughtActionsNames);
+
+		outcome = calculatingBought(toBuyAndSellFromMarket);
+		income = calculatingSold(toBuyAndSellFromMarket);
+
+		accountState = accountState + income - outcome;
+
+	}
+
+	private Double calculatingBought(ToBuyAndSellWithMarketTransport toBuyAndSellFromMarket) {
+		List<Long> boughtActionsEmount = toBuyAndSellFromMarket.getNumberOfBoughtActions();
+		List<Double> priceForOneBoughtActions = toBuyAndSellFromMarket.getPriceForOneBoughtAction();
+		List<Double> playerValueOfActions = new ArrayList<Double>();
+		Double value;
+		Double outcome = 0.0;
+
 		playerData.setPlayerNumberActions(boughtActionsEmount);
+		playerData.setPlayerValueOfActions(playerValueOfActions);
 
 		for (int i = 0; i < boughtActionsEmount.size(); i++) {
 			value = boughtActionsEmount.get(i) * priceForOneBoughtActions.get(i);
 			outcome = outcome + value;
 			playerValueOfActions.set(i, value);
 		}
-		for (Double price : priceForOneSoldActions) {
-			income = income + price;
-		}
+		return outcome;
+	}
 
-		accountState = accountState + income - outcome;
-		playerData.setPlayerValueOfActions(playerValueOfActions);
+	private Double calculatingSold(ToBuyAndSellWithMarketTransport toBuyAndSellFromMarket) {
+		List<Double> priceForOneSoldActions = toBuyAndSellFromMarket.getPriceForOneSoldActions();
+		List<Long> soldActionsEmount = toBuyAndSellFromMarket.getNumberOfSoldtActions();
+		Double income = 0.0;
+
+		for (int i = 0; i < soldActionsEmount.size(); i++) {
+			income = income + priceForOneSoldActions.get(i) * soldActionsEmount.get(i);
+		}
+		return income;
 	}
 
 }
