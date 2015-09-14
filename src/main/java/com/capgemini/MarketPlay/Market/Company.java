@@ -43,6 +43,14 @@ public class Company {
 		this.name = name;
 	}
 
+	public HashMap<String, Double> getPrices() {
+		return prices;
+	}
+
+	public void setPrices(HashMap<String, Double> prices) {
+		this.prices = prices;
+	}
+
 	public Double getTodayPrice() {
 		return todayPrice;
 	}

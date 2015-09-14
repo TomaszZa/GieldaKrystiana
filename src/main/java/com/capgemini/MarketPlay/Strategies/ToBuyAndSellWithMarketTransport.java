@@ -1,14 +1,23 @@
 package com.capgemini.MarketPlay.Strategies;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ToBuyAndSellWithMarketTransport {
-	private List<String> nameOfBoughtActions;
-	private List<Long> numberOfBoughtActions;
-	private List<Double> priceForOneBoughtActions;
-	private List<Double> priceForOneSoldActions;
-	private List<String> nameOfSoldActions;
-	private List<Long> numberOfSoldtActions;
+	private List<String> nameOfBoughtActions = new ArrayList<String>();
+	private List<Long> numberOfBoughtActions = new ArrayList<Long>();
+	private List<Double> priceForOneBoughtActions = new ArrayList<Double>();
+	private List<Double> priceForOneSoldActions = new ArrayList<Double>();
+	private List<String> nameOfSoldActions = new ArrayList<String>();
+	private List<Long> numberOfSoldtActions = new ArrayList<Long>();
+
+	public ToBuyAndSellWithMarketTransport() {
+	}
+
+	public ToBuyAndSellWithMarketTransport(List<String> nameOfBoughtActions, List<String> nameOfSoldActions) {
+		this.nameOfBoughtActions = nameOfBoughtActions;
+		this.nameOfSoldActions = nameOfSoldActions;
+	}
 
 	public List<String> getNameOfBoughtActions() {
 		return nameOfBoughtActions;

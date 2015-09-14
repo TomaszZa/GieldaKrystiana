@@ -9,31 +9,36 @@ import com.capgemini.MarketPlay.Strategies.ToBuyAndSellWithMarketTransport;
 
 public class Market {
 	private ReadFromFile file = new ReadFromFile();
-	private HashSet<Company> companys;
+	private HashSet<Company> companys = new HashSet<Company>();
 	private DateController dateController; // podaje date dla gieldy
 
 	public Market() {
 	}
 
-	public void startNewDayOnMarket(String todayDate) {
+	public void startNewDayOnMarket() {
 		int i = 0;
+		String todayDate = dateController.getActualDate();
+
 		for (String date : file.getDate()) {
 			i++;
 			if (todayDate.equals(date))
-				createCompany(file.getCompanyName().get(i - 1), file.getPrice().get(i - 1), file.getDate().get(i - 1));
+				createOrUbdateCompany(file.getCompanyName().get(i - 1), file.getPrice().get(i - 1),
+						file.getDate().get(i - 1));
 		}
 	}
 
-	private void createCompany(String name, Double todayPrice, String date) {
+	private void createOrUbdateCompany(String name, Double todayPrice, String date) {
 		Company tempCompany = new Company(name, todayPrice, date);
-		for (Company company : companys) {
-			if (company.equals(tempCompany)) {
-				company.addNewPrice(todayPrice, date);
+
+		if (!(companys.contains(tempCompany)))
+			companys.add(tempCompany);
+
+		if (companys.contains(tempCompany))
+			for (Company company : companys) {
+				if (company.equals(tempCompany)) {
+					company.addNewPrice(todayPrice, date);
+				}
 			}
-			if (!(company.equals(tempCompany))) {
-				companys.add(tempCompany);
-			}
-		}
 	}
 
 	public DataToStartegyTransport getRecentDataToStrategy() {
@@ -62,14 +67,37 @@ public class Market {
 			for (String actionOfCompanyName : actions.getNameOfBoughtActions()) {
 				boughtActionCount++;
 				if (company.getName() == actionOfCompanyName)
-					boughtPrices.set(boughtActionCount - 1, company.getTodayPrice());
+					boughtPrices.add(boughtActionCount - 1, company.getTodayPrice());
 			}
 			for (String actionOfCompanyName : actions.getNameOfSoldActions()) {
 				soldActionCount++;
 				if (company.getName() == actionOfCompanyName)
-					soldPrices.set(boughtActionCount - 1, company.getTodayPrice());
+					soldPrices.add(soldActionCount - 1, company.getTodayPrice());
 			}
 		}
 	}
 
+	public ReadFromFile getFile() {
+		return file;
+	}
+
+	public void setFile(ReadFromFile file) {
+		this.file = file;
+	}
+
+	public HashSet<Company> getCompanys() {
+		return companys;
+	}
+
+	public void setCompanys(HashSet<Company> companys) {
+		this.companys = companys;
+	}
+
+	public DateController getDateController() {
+		return dateController;
+	}
+
+	public void setDateController(DateController dateController) {
+		this.dateController = dateController;
+	}
 }

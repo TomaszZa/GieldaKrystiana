@@ -1,17 +1,19 @@
 package com.capgemini.MarketPlay.Market;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DataToStartegyTransport {
 
-	private List<String> nameActions;
-	private List<Double> todayPriceForActions;
-	private List<Double> growPoints;
-	private Double playerAccountState;
-	private List<String> playerOwnNameActions;
-	private List<Long> playerOwnNumberActions;
+	private List<String> nameActions = new ArrayList<String>();
+	private List<Double> todayPriceForActions = new ArrayList<Double>();
+	private List<Double> growPoints = new ArrayList<Double>();
+	private Double playerAccountState = 0.0;
+	private List<String> playerOwnNameActions = new ArrayList<String>();
+	private List<Long> playerOwnNumberActions = new ArrayList<Long>();
 
-	public DataToStartegyTransport(List<String> nameActions, List<Double> todayPriceForActions, List<Double> growPoints) {
+	public DataToStartegyTransport(List<String> nameActions, List<Double> todayPriceForActions,
+			List<Double> growPoints) {
 
 		this.nameActions = nameActions;
 		this.todayPriceForActions = todayPriceForActions;

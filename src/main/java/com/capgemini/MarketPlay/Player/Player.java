@@ -27,7 +27,7 @@ public class Player {
 		this.marketOffice = new MarketOffice();
 	}
 
-	public void takeNeededDate() {
+	public void takeNeededData() {
 		marketOffice.takeAndChangeDate();
 
 		dataToStrategy = marketOffice.getDataToStrategy();
@@ -102,4 +102,43 @@ public class Player {
 		return income;
 	}
 
+	public MarketOffice getMarketOffice() {
+		return marketOffice;
+	}
+
+	public void setMarketOffice(MarketOffice marketOffice) {
+		this.marketOffice = marketOffice;
+	}
+
+	public Strategy getStrategy() {
+		return strategy;
+	}
+
+	public void setStrategy(Strategy strategy) {
+		this.strategy = strategy;
+	}
+
+	public PlayerData getPlayerData() {
+		return playerData;
+	}
+
+	public void setPlayerData(PlayerData playerData) {
+		this.playerData = playerData;
+	}
+
+	public DataToStartegyTransport getDataToStrategy() {
+		return dataToStrategy;
+	}
+
+	public void setDataToStrategy(DataToStartegyTransport dataToStrategy) {
+		this.dataToStrategy = dataToStrategy;
+	}
+
+	public DateController getDateController() {
+		return dateController;
+	}
+
+	public void setDateController(DateController dateController) {
+		this.dateController = dateController;
+	}
 }

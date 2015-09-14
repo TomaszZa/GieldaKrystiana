@@ -19,8 +19,8 @@ public class StartApplication {
 			if (!(date.getActualDate().equals(previusDate))) {
 				previusDate = date.getActualDate();
 
-				market.startNewDayOnMarket(date.getActualDate());
-				player.takeNeededDate();
+				market.startNewDayOnMarket();
+				player.takeNeededData();
 				player.realizeTrade();
 				view.showPlayerActions();
 			}

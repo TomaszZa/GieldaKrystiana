@@ -15,7 +15,8 @@ public class MarketOffice {
 		market = new Market();
 	}
 
-	public void takeAndChangeDate() { // obczaic czy zmienia!!!!!!!
+	public DataToStartegyTransport takeAndChangeDate() { // obczaic czy
+															// zmienia!!!!!!!
 		List<Double> todayPriceForActions;
 
 		dataToStrategy = market.getRecentDataToStrategy();
@@ -24,6 +25,7 @@ public class MarketOffice {
 		for (Double price : todayPriceForActions) {
 			price += buyingTax * price;
 		}
+		return dataToStrategy;
 	}
 
 	public DataToStartegyTransport getDataToStrategy() {
