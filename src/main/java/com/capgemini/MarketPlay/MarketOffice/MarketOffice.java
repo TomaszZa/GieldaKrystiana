@@ -1,4 +1,4 @@
-package com.capgemini.MarketPlayer.MarketOffice;
+package com.capgemini.MarketPlay.MarketOffice;
 
 import java.util.List;
 

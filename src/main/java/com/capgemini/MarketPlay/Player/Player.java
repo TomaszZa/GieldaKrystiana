@@ -5,13 +5,13 @@ import java.util.List;
 
 import com.capgemini.MarketPlay.Main.DateController;
 import com.capgemini.MarketPlay.Market.DataToStartegyTransport;
+import com.capgemini.MarketPlay.MarketOffice.MarketOffice;
 import com.capgemini.MarketPlay.Strategies.FallingStrategy;
 import com.capgemini.MarketPlay.Strategies.GrowingStrategy;
 import com.capgemini.MarketPlay.Strategies.NoChangingStrategy;
 import com.capgemini.MarketPlay.Strategies.Strategy;
 import com.capgemini.MarketPlay.Strategies.ToBuyAndSellWithMarketTransport;
 import com.capgemini.MarketPlay.View.ChoosenStrategy;
-import com.capgemini.MarketPlayer.MarketOffice.MarketOffice;
 
 //REFACTOR
 public class Player {
