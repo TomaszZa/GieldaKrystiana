@@ -1,13 +1,21 @@
 package com.capgemini.MarketPlay.Player;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PlayerData {
 	private String playerName;
-	private Double playerAccountState = 10000.0;
+	private Double playerAccountState;
 	private List<String> playerNameActions;
 	private List<Long> playerNumberActions;
 	private List<Double> playerValueOfActions;
+
+	public PlayerData() {
+		playerAccountState = 10000.0;
+		playerNameActions = new ArrayList<String>();
+		playerNumberActions = new ArrayList<Long>();
+		playerValueOfActions = new ArrayList<Double>();
+	}
 
 	public String getPlayerName() {
 		return playerName;

@@ -70,6 +70,7 @@ public class Player {
 		income = calculatingSold(toBuyAndSellFromMarket);
 
 		accountState = accountState + income - outcome;
+		playerData.setPlayerAccountState(accountState);
 
 	}
 
@@ -86,7 +87,7 @@ public class Player {
 		for (int i = 0; i < boughtActionsEmount.size(); i++) {
 			value = boughtActionsEmount.get(i) * priceForOneBoughtActions.get(i);
 			outcome = outcome + value;
-			playerValueOfActions.set(i, value);
+			playerValueOfActions.add(i, value);
 		}
 		return outcome;
 	}

@@ -3,6 +3,7 @@ package com.capgemini.MarketPlay.Strategies;
 import com.capgemini.MarketPlay.Market.DataToStartegyTransport;
 
 public class GrowingStrategy implements Strategy {
+	private final String strategyName = "GrowingStrategy";
 
 	@Override
 	public ToBuyAndSellWithMarketTransport checkMovesInStrategy(DataToStartegyTransport date) {
@@ -10,4 +11,7 @@ public class GrowingStrategy implements Strategy {
 		return null;
 	}
 
+	public int hashCode() {
+		return strategyName.hashCode();
+	}
 }

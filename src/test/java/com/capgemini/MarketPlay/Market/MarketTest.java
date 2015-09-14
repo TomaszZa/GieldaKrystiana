@@ -101,7 +101,8 @@ public class MarketTest {
 		nameOfBoughtActions.add("B");
 
 		ToBuyAndSellWithMarketTransport transportClass = new ToBuyAndSellWithMarketTransport(nameOfBoughtActions,
-				nameOfSoldActions);
+				new ArrayList<Long>(), new ArrayList<Double>(), new ArrayList<Double>(), nameOfSoldActions,
+				new ArrayList<Long>());
 
 		Company company1 = new Company("A", new Double(20.0), "9999-9-99");
 		Company company2 = new Company("B", new Double(10.0), "9999-9-99");

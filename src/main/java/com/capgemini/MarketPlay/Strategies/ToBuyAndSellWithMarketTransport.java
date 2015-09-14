@@ -14,9 +14,15 @@ public class ToBuyAndSellWithMarketTransport {
 	public ToBuyAndSellWithMarketTransport() {
 	}
 
-	public ToBuyAndSellWithMarketTransport(List<String> nameOfBoughtActions, List<String> nameOfSoldActions) {
+	public ToBuyAndSellWithMarketTransport(List<String> nameOfBoughtActions, List<Long> numberOfBoughtActions,
+			List<Double> priceForOneBoughtActions, List<Double> priceForOneSoldActions, List<String> nameOfSoldActions,
+			List<Long> numberOfSoldtActions) {
 		this.nameOfBoughtActions = nameOfBoughtActions;
+		this.numberOfBoughtActions = numberOfBoughtActions;
+		this.priceForOneBoughtActions = priceForOneBoughtActions;
+		this.priceForOneSoldActions = priceForOneSoldActions;
 		this.nameOfSoldActions = nameOfSoldActions;
+		this.numberOfSoldtActions = numberOfSoldtActions;
 	}
 
 	public List<String> getNameOfBoughtActions() {
